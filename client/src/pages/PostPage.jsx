@@ -12,7 +12,7 @@ export default function PostPage() {
 
     useEffect(() => {
 
-        fetch(`http://localhost:4000/post/${id}`)
+        fetch(`https://rq-blog-app.vercel.app/post/${id}`)
             .then(response => {
                 response.json()
                     .then(postInfo => {

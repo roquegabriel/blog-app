@@ -36,7 +36,7 @@ export default function EditPage() {
         if (files?.[0]) {
             data.set('file', files?.[0])
         }
-        fetch('http://localhost:4000/post', {
+        fetch('https://rq-blog-app.vercel.app/post', {
             method: 'PUT',
             body: data,
             credentials: 'include',

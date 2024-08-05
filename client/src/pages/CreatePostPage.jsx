@@ -20,7 +20,7 @@ export default function CreatePostPage() {
         data.set('summary', summary)
         data.set('content', content)
         data.set('file', files[0])
-        fetch('http://localhost:4000/create', {
+        fetch('https://rq-blog-app.vercel.app/create', {
             method: 'POST',
             body: data,
             credentials: 'include'

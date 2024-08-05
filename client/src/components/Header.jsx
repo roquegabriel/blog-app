@@ -12,7 +12,7 @@ export default function Header() {
   const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:4000/profile', {
+    fetch('https://rq-blog-app.vercel.app/api/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -22,7 +22,7 @@ export default function Header() {
   }, [])
 
   const logout = () => {
-    fetch('http://localhost:4000/logout', {
+    fetch('https://rq-blog-app.vercel.app/api/logout', {
       credentials: 'include',
       method: 'POST'
     }).then(response => {

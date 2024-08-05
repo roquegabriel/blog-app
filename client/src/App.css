@@ -1,0 +1,23 @@
+body {
+  color: #333;
+  padding-top: 75px;
+}
+
+header {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+main.container {
+  max-width: 1000px;
+}
+
+main a {
+  text-decoration: none;
+  color: inherit;
+}
+
+time {
+  font-size: 0.9em;
+}

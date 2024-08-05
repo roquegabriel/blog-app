@@ -58,7 +58,7 @@ const uploadToS3 = async (path, originalFilename, mimetype) => {
     return `https://${bucket}.s3.amazonaws.com/${newFilename}`
 }
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { username, password } = req.body
     try {
         const userDoc = await User.create({
@@ -71,7 +71,7 @@ app.post('/register', async (req, res) => {
     }
 })
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { username, password } = req.body
     const userDoc = await User.findOne({ username })
     const isMatch = bcrypt.compareSync(password, userDoc.password)
@@ -88,7 +88,7 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.get('/profile', (req, res) => {
+app.get('/api/profile', (req, res) => {
     const { jwtToken } = req.cookies
     jwt.verify(jwtToken, secret, {}, (err, info) => {
         if (err) res.json(err)
@@ -96,10 +96,10 @@ app.get('/profile', (req, res) => {
     })
 })
 
-app.post('/logout', (req, res) => {
+app.post('/api/logout', (req, res) => {
     res.cookie('jwtToken', '').json('ok')
 })
-app.post('/create', upload.single('file'), async (req, res) => {
+app.post('/api/create', upload.single('file'), async (req, res) => {
     const { originalname, path, mimetype } = req.file
     const { title, summary, content } = req.body
 
@@ -113,15 +113,15 @@ app.post('/create', upload.single('file'), async (req, res) => {
     })
 
 })
-app.get('/post', async (req, res) => {
+app.get('/api/post', async (req, res) => {
     res.json(await Post.find().populate('author', ['username']).sort({ createdAt: -1 }).limit(20))
 })
-app.get('/post/:id', async (req, res) => {
+app.get('/api/post/:id', async (req, res) => {
     const { id } = req.params
     const postDoc = await Post.findById(id).populate('author', ['username'])
     res.json(postDoc)
 })
-app.put('/post', upload.single('file'), async (req, res) => {
+app.put('/api/post', upload.single('file'), async (req, res) => {
     let newPath = null
     if (req.file) {
         const { originalname, path } = req.file

@@ -6,7 +6,7 @@ export default function IndexPage() {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('https://rq-blog-app.vercel.app/post').then(response => {
+        fetch('https://rq-blog-app.vercel.app/api/post').then(response => {
             response.json().then(posts => {
                 setPosts(posts)
             })

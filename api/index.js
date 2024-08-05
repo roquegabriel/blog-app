@@ -25,7 +25,7 @@ const bucket = 'rq-blog-bucket'
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://rq-blog-app.vercel.app'
 }))
 app.use(express.json())
 app.use(cookieParser())

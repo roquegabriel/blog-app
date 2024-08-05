@@ -15,7 +15,7 @@ export default function EditPage() {
     const { userInfo } = useContext(UserContext)
 
     useEffect(() => {
-        fetch(`http://localhost:4000/post/${id}`)
+        fetch(`https://rq-blog-app.vercel.app/api/post/${id}`)
             .then(response => {
                 response.json()
                     .then(infoPost => {
